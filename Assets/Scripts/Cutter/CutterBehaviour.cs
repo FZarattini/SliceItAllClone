@@ -1,4 +1,3 @@
-using Dreamteck.Splines;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -6,6 +5,7 @@ using Sirenix.OdinInspector;
 using UnityEngine.UIElements;
 using System.ComponentModel.Design;
 using System;
+using UnityEngine.Assertions.Must;
 
 public class CutterBehaviour : MonoBehaviour
 {
@@ -13,8 +13,7 @@ public class CutterBehaviour : MonoBehaviour
     [SerializeField] CutterDataSO _cutterData = null;
 
     [Title("Object References")]
-    [SerializeField] SplineManager _splineManager = null;
-    [SerializeField] SplineFollower _splineFollower = null;
+    [SerializeField] Rigidbody _rigidBody = null;
     [SerializeField] GameObject _activeBlade = null;
 
     [Title("Control")]
@@ -24,7 +23,6 @@ public class CutterBehaviour : MonoBehaviour
     void Start()
     {
         enableZRotation = false;
-        _splineFollower.applyDirectionRotation = false;
 
         InputManager.OnClickActionPerformed += LaunchCutter;
         InputManager.OnTouchActionPerformed += LaunchCutter;
@@ -46,16 +44,10 @@ public class CutterBehaviour : MonoBehaviour
     [Button]
     public void LaunchCutter()
     {
-        SplineComputer _splineComputer = _splineFollower.spline;
 
-        _splineManager.PositionSpline(transform.position, _cutterData.CutterHorizontalDistance, _cutterData.CutterVerticalDistance);
-
-        _splineFollower.Restart();
-        _splineFollower.RebuildImmediate();
-
-        _splineFollower.followSpeed = _cutterData.CutterMoveSpeed;
         enableZRotation = true;
-        _splineFollower.follow = true;
+        _rigidBody.isKinematic = false;
+        _rigidBody.AddForce(new Vector3(_cutterData.CutterXForce, _cutterData.CutterYForce, 0f), ForceMode.Impulse);
     }
 
     void RotateCutter()
