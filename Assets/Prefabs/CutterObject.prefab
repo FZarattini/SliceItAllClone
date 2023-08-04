@@ -49,8 +49,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _cutterData: {fileID: 11400000, guid: 1af34c54358826440b5325d052b2a85c, type: 2}
   _rigidBody: {fileID: 1678762515600967791}
-  _activeBlade: {fileID: 1678762517171756770}
+  _activeBlade: {fileID: 1677670746997002139}
   enableZRotation: 1
+  endGameTag: 
 --- !u!54 &1678762515600967791
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -186,6 +187,24 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 5ec75742cd4d1bf468f7c5253311a91c, type: 3}
+--- !u!1 &1677670746997002139 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 1232804100520810, guid: 5ec75742cd4d1bf468f7c5253311a91c, type: 3}
+  m_PrefabInstance: {fileID: 1678762516709061873}
+  m_PrefabAsset: {fileID: 0}
+--- !u!65 &8387124130897681445
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1677670746997002139}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 0.23635238, y: 0.4410037, z: 0.16131113}
+  m_Center: {x: 0.009500337, y: 0.21465331, z: 0.0420196}
 --- !u!4 &1683318319381287185 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 4627339917796832, guid: 5ec75742cd4d1bf468f7c5253311a91c, type: 3}

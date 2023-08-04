@@ -12,7 +12,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e945d11ef2f7ab143a9622411213bd5e, type: 3}
   m_Name: CutterData
   m_EditorClassIdentifier: 
-  CutterMoveSpeed: 2
-  CutterRotationSpeed: 2
-  CutterHorizontalDistance: 1.5
-  CutterVerticalDistance: 1.5
+  CutterXForce: 1.5
+  CutterYForce: 4
+  CutterRotationSpeed: 10
