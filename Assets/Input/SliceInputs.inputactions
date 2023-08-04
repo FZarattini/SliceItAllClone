@@ -1,0 +1,54 @@
+{
+    "name": "SliceInputs",
+    "maps": [
+        {
+            "name": "Touch",
+            "id": "6edf7248-8c2f-4dbb-a5e1-985f3fac49aa",
+            "actions": [
+                {
+                    "name": "Touch",
+                    "type": "Button",
+                    "id": "9c3656f1-ed0b-4584-a2d6-e96d30aa43e9",
+                    "expectedControlType": "Button",
+                    "processors": "",
+                    "interactions": "",
+                    "initialStateCheck": false
+                },
+                {
+                    "name": "Click",
+                    "type": "Button",
+                    "id": "2221035d-e4e1-4da2-a710-7b9cf34d6248",
+                    "expectedControlType": "Button",
+                    "processors": "",
+                    "interactions": "",
+                    "initialStateCheck": false
+                }
+            ],
+            "bindings": [
+                {
+                    "name": "",
+                    "id": "37ab1247-bc2d-4420-b8a7-9304a490d1c2",
+                    "path": "<Touchscreen>/touch0/tap",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "Touch",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "5fa6fd42-d58b-4df0-8a22-ef833f2cb1ee",
+                    "path": "<Mouse>/leftButton",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "Click",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                }
+            ]
+        }
+    ],
+    "controlSchemes": []
+}
