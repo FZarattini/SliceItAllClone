@@ -13,7 +13,7 @@ GameObject:
   - component: {fileID: 7610855319824193437}
   m_Layer: 0
   m_Name: Apple
-  m_TagString: Untagged
+  m_TagString: Cuttable
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -47,10 +47,15 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8dc8ab77d04790a468d7e92d1863fd24, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  _cuttableData: {fileID: 11400000, guid: 15e2c3f7d532ba94bb6e1bd919aebd40, type: 2}
   _leftSide: {fileID: 7488141568227829794}
   _rightSide: {fileID: 5164618811080197864}
+  _partsColliders:
+  - {fileID: 706440763047444237}
+  - {fileID: 7177785716167630287}
   _boxCollider: {fileID: 7610855319824193437}
   cutTag: BladeCollider
+  isCut: 0
 --- !u!65 &7610855319824193437
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -80,7 +85,7 @@ GameObject:
   - component: {fileID: 7177785716167630287}
   m_Layer: 7
   m_Name: AppleLeft
-  m_TagString: Untagged
+  m_TagString: CuttablePart
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -3211,7 +3216,7 @@ MeshCollider:
   m_GameObject: {fileID: 5844322488989142131}
   m_Material: {fileID: 0}
   m_IsTrigger: 0
-  m_Enabled: 1
+  m_Enabled: 0
   serializedVersion: 4
   m_Convex: 1
   m_CookingOptions: 30
@@ -3232,7 +3237,7 @@ GameObject:
   - component: {fileID: 706440763047444237}
   m_Layer: 7
   m_Name: AppleRight
-  m_TagString: Untagged
+  m_TagString: CuttablePart
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -6402,7 +6407,7 @@ MeshCollider:
   m_GameObject: {fileID: 7440347362840048874}
   m_Material: {fileID: 0}
   m_IsTrigger: 0
-  m_Enabled: 1
+  m_Enabled: 0
   serializedVersion: 4
   m_Convex: 1
   m_CookingOptions: 30

@@ -5,7 +5,10 @@ using UnityEngine;
 [CreateAssetMenu(fileName = "CutterData", menuName = "ScriptableObjects/CutterDataSO", order = 1)]
 public class CutterDataSO : ScriptableObject
 {
-    public float CutterXForce;
-    public float CutterYForce;
-    public float CutterRotationSpeed;
+    public float CutterLaunch_XForce;
+    public float CutterLaunch_YForce;
+    public float CutterBounce_XForce;
+    public float CutterBounce_YForce;
+    public float CutterLaunch_RotationSpeed;
+    public float CutterBounce_RotationSpeed;
 }

@@ -12,8 +12,8 @@ public class InputManager : MonoBehaviour
     [Title("Data and References")]
     [SerializeField] SliceInputs _inputs;
 
-    public static Action OnTouchActionPerformed = null;
-    public static Action OnClickActionPerformed = null;
+    public static Action<bool> OnTouchActionPerformed = null;
+    public static Action<bool> OnClickActionPerformed = null;
 
 
     private void Awake()
@@ -50,11 +50,11 @@ public class InputManager : MonoBehaviour
 
     void OnTouchPerformed(InputAction.CallbackContext context)
     {
-        OnTouchActionPerformed?.Invoke();
+        OnTouchActionPerformed?.Invoke(true);
     }
 
     void OnClickPerformed(InputAction.CallbackContext context)
     {
-        OnClickActionPerformed?.Invoke();
+        OnClickActionPerformed?.Invoke(true);
     }
 }
