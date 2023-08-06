@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using TMPro;
 using UnityEngine;
 
+// Displays the player score, updated everytime the score changes in GameManager
 public class ScorePanel : MonoBehaviour
 {
     [SerializeField] TextMeshProUGUI _scoreText;

@@ -69,6 +69,7 @@ public class LevelManager : MonoBehaviour
         LoadLevel(currentLevelIndex);
     }
 
+    // Instantiates the current level prefab from the prefab list
     [Button]
     void LoadLevel(int index)
     {
@@ -84,14 +85,12 @@ public class LevelManager : MonoBehaviour
             SetupCamera();
         }
 
-        if (currentLevelIndex == _levelPrefabs.Count - 1)
-            isOnLastLevel = true;
-        else
-            isOnLastLevel = false;
+        isOnLastLevel = (currentLevelIndex == _levelPrefabs.Count - 1);
 
         GameManager.Instance.StartGame();
     }
 
+    // Unloads the current loaded level
     void ClearCurrentLevel()
     {
         if (currentLevel == null) return;

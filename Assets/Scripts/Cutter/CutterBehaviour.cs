@@ -16,7 +16,6 @@ public class CutterBehaviour : MonoBehaviour
 
     [Title("Object References")]
     [SerializeField] Rigidbody _rigidBody = null;
-    [SerializeField] GameObject _activeBlade = null;
 
     [Title("Control")]
     [SerializeField, ReadOnly] bool cutterFrozen;
@@ -43,9 +42,11 @@ public class CutterBehaviour : MonoBehaviour
     // Update is called once per frame
     void FixedUpdate()
     {
+        // Resets the inertia tensor to be the coordinate system of the transform
         _rigidBody.inertiaTensorRotation = Quaternion.identity;
     }
 
+    // Launches the Cutter using AddForce on the X and Y axis and applying rotation
     [Button]
     public void LaunchCutter(bool direction = true)
     {
@@ -69,11 +70,13 @@ public class CutterBehaviour : MonoBehaviour
         StartCoroutine("UnfreezeObject");
     }
 
+    // Launches the cutter in the opposite direction when the hilt hits a surface
     public void Bounce()
     {
         LaunchCutter(false);
     }
 
+    // Rotates the object using AddTorque
     void RotateCutter(bool direction = true)
     {
         Vector3 torque;
@@ -87,6 +90,7 @@ public class CutterBehaviour : MonoBehaviour
         _rigidBody.AddRelativeTorque(torque, ForceMode.Acceleration);
     }
 
+    // Freezes the cutter when it gets stuck in a surface
     public void FreezeObject()
     {
         if (cutterFrozen) return;
@@ -97,12 +101,7 @@ public class CutterBehaviour : MonoBehaviour
         cutterFrozen = true;
     }
 
-    public void InstantUnfreezeObject()
-    {
-        cutterFrozen = false;
-        _rigidBody.isKinematic = false;
-    }
-
+    // Unfreezes the object after a little delay. Makes so the object avoids getting reestuck on the same surface after being launched.
     IEnumerator UnfreezeObject()
     {
         yield return new WaitForSeconds(0.5f);

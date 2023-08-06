@@ -8,9 +8,12 @@ public class GameManager : MonoBehaviour
 {
     public static GameManager Instance;
 
+    [Title("Game State and Player Score")]
+
     [SerializeField, ReadOnly] private bool _gameRunning;
     [SerializeField, ReadOnly] int playerScore;
 
+    [Title("Events")]
     public static event Action OnLoseGame;
     public static event Action OnWinGame;
     public static event Action OnRestartGame;

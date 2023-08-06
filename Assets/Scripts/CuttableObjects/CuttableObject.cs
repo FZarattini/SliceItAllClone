@@ -24,6 +24,10 @@ public class CuttableObject : MonoBehaviour
 
     public static event Action<int> OnObjectCut;
 
+
+    // Sets the object as cut, disables the parents' collider and enabled both parts collider so they can fall off naturally 
+    // Addforce used for gamefeel, object is thrown to the side with a little bit more force and falls off the platform
+    // Enables the text mesh with the score value and adds to the player score
     void Cut()
     {
         var cutForce = new Vector3(0f, 0f, _cuttableData.OnCutForce);
@@ -50,6 +54,8 @@ public class CuttableObject : MonoBehaviour
         _scoreText.gameObject.SetActive(true);
     }
 
+
+    // Handles its own collision with the player collider
     private void OnTriggerEnter(Collider other)
     {
         if (isCut) return;

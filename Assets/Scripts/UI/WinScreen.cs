@@ -4,9 +4,11 @@ using UnityEngine;
 using TMPro;
 using UnityEngine.UI;
 using Doozy.Runtime.UIManager.Containers;
+using Sirenix.OdinInspector;
 
 public class WinScreen : MonoBehaviour
 {
+    [Title("Prefab References")]
     [SerializeField] UIContainer _container;
     [SerializeField] TextMeshProUGUI _scoreValueText;
     [SerializeField] Button _continueButton;
@@ -22,6 +24,7 @@ public class WinScreen : MonoBehaviour
         GameManager.OnWinGame -= SetWinScreen;
     }
 
+    // Sets the screen data
     void SetWinScreen()
     {
         GameManager.Instance.GameRunning = false;

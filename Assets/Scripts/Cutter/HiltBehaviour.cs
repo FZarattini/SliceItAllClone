@@ -6,9 +6,9 @@ using UnityEngine;
 public class HiltBehaviour : MonoBehaviour
 {
     [SerializeField] CutterBehaviour _cutter = null;
-    [SerializeField] BoxCollider _hiltCollider = null;
     [SerializeField] TagDataSO _tagData = null;
 
+    // Handles collision of the Hilt of the Cutter Object with other colliders
     private void OnTriggerEnter(Collider other)
     {
         if (_cutter.CutterFrozen) return;

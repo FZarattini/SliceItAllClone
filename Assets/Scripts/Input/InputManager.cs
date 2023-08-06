@@ -48,11 +48,13 @@ public class InputManager : MonoBehaviour
         _inputs.Disable();
     }
 
+    // OnTouch event handler
     void OnTouchPerformed(InputAction.CallbackContext context)
     {
         OnTouchActionPerformed?.Invoke(true);
     }
 
+    // OnClick event handler
     void OnClickPerformed(InputAction.CallbackContext context)
     {
         OnClickActionPerformed?.Invoke(true);
