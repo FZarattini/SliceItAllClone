@@ -9,22 +9,22 @@ public class CuttableObject : MonoBehaviour
     [Title("Data")]
     [SerializeField] CuttableDataSO _cuttableData;
     [SerializeField] int scoreAmount;
+    [SerializeField] TagDataSO _tagData;
 
     [Title("Object References")]
     [SerializeField] Rigidbody _leftSide = null;
     [SerializeField] Rigidbody _rightSide = null;
     [SerializeField] List<MeshCollider> _partsColliders;
     [SerializeField] BoxCollider _boxCollider = null;
+    [SerializeField] TextMesh _scoreText = null;
 
-    [Title("Setup")]
-    [SerializeField] string cutTag;
 
     [Title("Control")]
     [SerializeField, ReadOnly] bool isCut;
 
     public static event Action<int> OnObjectCut;
 
-    public void Cut()
+    void Cut()
     {
         var cutForce = new Vector3(0f, 0f, _cuttableData.OnCutForce);
         _boxCollider.enabled = false;
@@ -37,21 +37,27 @@ public class CuttableObject : MonoBehaviour
         _leftSide.isKinematic = false;
         _rightSide.isKinematic = false;
 
-        _leftSide.AddForce(-cutForce);
-        _rightSide.AddForce(cutForce);
+        _leftSide.AddForce(cutForce);
+        _rightSide.AddForce(-cutForce);
+        ShowScore();
+
+        OnObjectCut?.Invoke(scoreAmount);
+    }
+
+    public void ShowScore()
+    {
+        _scoreText.text = $"+{scoreAmount}";
+        _scoreText.gameObject.SetActive(true);
     }
 
     private void OnTriggerEnter(Collider other)
     {
-        if (other.CompareTag(cutTag))
+        if (isCut) return;
+
+        if (other.CompareTag(_tagData.BladeTag))
         {
+            isCut = true;
             Cut();
-            OnObjectCut?.Invoke(scoreAmount);
         }
-    }
-
-    private void ShowScore()
-    {
-
     }
 }

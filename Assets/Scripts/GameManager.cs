@@ -1,4 +1,5 @@
 using Sirenix.OdinInspector;
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -8,9 +9,12 @@ public class GameManager : MonoBehaviour
     public static GameManager Instance;
 
     [SerializeField, ReadOnly] private bool _gameRunning;
-    [SerializeReference] List<string> _playerTags;
-
     [SerializeField, ReadOnly] int playerScore;
+
+    public static event Action OnLoseGame;
+    public static event Action OnWinGame;
+    public static event Action OnRestartGame;
+    public static event Action<int> OnScoreChanged;
 
     public bool GameRunning
     {
@@ -18,7 +22,7 @@ public class GameManager : MonoBehaviour
         set => _gameRunning = value;
     }
 
-    public List<string> PlayerTags => _playerTags;
+    public int PlayerScore => playerScore;
 
     private void Awake()
     {
@@ -36,31 +40,42 @@ public class GameManager : MonoBehaviour
 
     private void Start()
     {
+        CuttableObject.OnObjectCut += AddScore;
+        ScoreArea.OnScoreAreaHit += AddScore;
+
         StartGame();
     }
 
-    void StartGame()
+    private void OnDestroy()
+    {
+        CuttableObject.OnObjectCut -= AddScore;
+        ScoreArea.OnScoreAreaHit -= AddScore;
+    }
+
+    public void StartGame()
     {
         _gameRunning = true;
     }
 
     void AddScore(int value)
     {
-
+        playerScore += value;
+        OnScoreChanged?.Invoke(playerScore);
     }
 
-    void MultiplyPoints(int value)
+    public void RestartGame()
     {
-
+        playerScore = 0;
+        OnRestartGame?.Invoke();
     }
 
     public void LoseGame()
     {
-
+        OnLoseGame?.Invoke();
     }
 
     public void WinGame()
     {
-
+        OnWinGame?.Invoke();
     }
 }

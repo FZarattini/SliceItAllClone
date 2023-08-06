@@ -7,15 +7,15 @@ public class HiltBehaviour : MonoBehaviour
 {
     [SerializeField] CutterBehaviour _cutter = null;
     [SerializeField] BoxCollider _hiltCollider = null;
-    [SerializeField] List<string> cuttableTags;
+    [SerializeField] TagDataSO _tagData = null;
 
     private void OnTriggerEnter(Collider other)
     {
         if (_cutter.CutterFrozen) return;
 
-        for(int i = 0; i < cuttableTags.Count; i++)
+        if (other.CompareTag(_tagData.CuttablePartTag))
         {
-            if (other.CompareTag(cuttableTags[i])) return;
+            return;
         }
 
         _cutter.Bounce();

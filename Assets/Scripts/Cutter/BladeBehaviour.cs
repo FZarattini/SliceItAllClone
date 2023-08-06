@@ -9,22 +9,15 @@ public class BladeBehaviour : MonoBehaviour
     [SerializeField] BoxCollider _bladeCollider = null;
 
     [Title("Setup")]
-    [SerializeField] List<string> cuttableTags;
+    [SerializeField] TagDataSO _tagData;
 
     private void OnTriggerEnter(Collider other)
     {
-        Debug.Log(other.tag);
-
-        for (int i = 0; i < cuttableTags.Count; i++) 
+        if (other.CompareTag(_tagData.CuttableTag) || other.CompareTag(_tagData.CuttablePartTag))
         {
-            if (other.CompareTag(cuttableTags[i])) return;
+            return;
         }
 
         _cutter.FreezeObject();
-    }
-
-    private void OnCollisionEnter(Collision collision)
-    {
-        
     }
 }

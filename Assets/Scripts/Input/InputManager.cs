@@ -35,7 +35,7 @@ public class InputManager : MonoBehaviour
         _inputs = new SliceInputs();
 
         _inputs.Touch.Touch.performed += OnTouchPerformed;
-        _inputs.Touch.Click.performed += OnTouchPerformed;
+        _inputs.Touch.Click.performed += OnClickPerformed;
 
         _inputs.Enable();
     }
@@ -43,7 +43,7 @@ public class InputManager : MonoBehaviour
     private void OnDisable()
     {
         _inputs.Touch.Touch.performed -= OnTouchPerformed;
-        _inputs.Touch.Click.performed -= OnTouchPerformed;
+        _inputs.Touch.Click.performed -= OnClickPerformed;
 
         _inputs.Disable();
     }

@@ -49,6 +49,8 @@ public class CutterBehaviour : MonoBehaviour
     [Button]
     public void LaunchCutter(bool direction = true)
     {
+        if (!GameManager.Instance.GameRunning) return;
+
         _rigidBody.isKinematic = false;
 
         _rigidBody.velocity = Vector3.zero;

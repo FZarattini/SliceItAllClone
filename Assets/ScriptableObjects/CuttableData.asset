@@ -12,4 +12,4 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 32d640577b27e8b44958cc3a94805d4b, type: 3}
   m_Name: CuttableData
   m_EditorClassIdentifier: 
-  OnCutForce: 25
+  OnCutForce: 150

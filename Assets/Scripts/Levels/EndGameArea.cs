@@ -4,12 +4,11 @@ using UnityEngine;
 
 public class EndGameArea : MonoBehaviour
 {
+    [SerializeField] TagDataSO _tagData;
+
     private void OnTriggerEnter(Collider other)
     {
-        foreach(string s in GameManager.Instance.PlayerTags)
-        {
-            if (other.CompareTag(s))
-                GameManager.Instance.LoseGame();
-        }
+        if (other.CompareTag(_tagData.BladeTag) || other.CompareTag(_tagData.HiltTag))
+            GameManager.Instance.LoseGame();
     }
 }

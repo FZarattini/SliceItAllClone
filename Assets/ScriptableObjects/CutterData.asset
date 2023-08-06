@@ -13,8 +13,8 @@ MonoBehaviour:
   m_Name: CutterData
   m_EditorClassIdentifier: 
   CutterLaunch_XForce: 1.5
-  CutterLaunch_YForce: 6
-  CutterBounce_XForce: 0.5
+  CutterLaunch_YForce: 4
+  CutterBounce_XForce: 1
   CutterBounce_YForce: 2
   CutterLaunch_RotationSpeed: 280
   CutterBounce_RotationSpeed: 200
